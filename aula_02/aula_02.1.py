@@ -29,7 +29,6 @@ response = model.invoke(prompt)
 #    SystemMessage("Traduza o seguinte texto de Inglês para português"),
 #    HumanMessage("Hi!")
 #])
-
 print(response.content)
 
  

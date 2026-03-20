@@ -12,19 +12,14 @@ def load_documents():
         bs_kwargs={"features": "html.parser"}
     )
     documento_html = loader_html.load()
-    print(documento_pdf[0].page_content[:500])
     documentos = documento_pdf + documento_html
-
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=800,
         chunk_overlap=120,
         add_start_index=True
     )
-
     chunks = text_splitter.split_documents(documentos)
-
     return chunks
 
-load_documents()
 ##print(documento_pdf[0].page_content[:500])
 ##print(documento_html[0].metadata)

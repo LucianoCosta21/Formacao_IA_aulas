@@ -17,13 +17,26 @@ vectordb = Chroma(
 )
 
 ##Busca simples
-retriever = vectordb.as_retriever(search_kwargs={"k": 3})
+#retriever = vectordb.as_retriever(search_kwargs={"k": 3})
 
-query = "Quais foram os principais marcos da Inteligência Artificial?"
+#query = "Quais foram os principais marcos da Inteligência Artificial?"
 
-resultado = retriever.invoke(query)
-print(resultado)
-for doc in resultado:
-    print(doc.page_content[:200])
-    print(doc.metadata)
-    print("-" * 50)
+#resultado = retriever.invoke(query)
+#for doc in resultado:
+#    print(doc.page_content[:200])
+#    print(doc.metadata)
+#    print("-" * 50)
+
+for k in [1,3,5]:
+    
+    retriever = vectordb.as_retriever(search_kwargs={"k": k})
+    
+    query = "Quais foram os principais marcos da Inteligência Artificial?"
+    
+    resultado = retriever.invoke(query)
+    
+    for doc in resultado:
+        print(doc.page_content[:200])
+        print("-" * 50)
+
+
